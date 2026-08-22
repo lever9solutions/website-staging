@@ -2470,7 +2470,7 @@ if (contactForm) {
     const data = new FormData(contactForm);
     const subject = encodeURIComponent(`Workflow inquiry from ${data.get("company") || data.get("name")}`);
     const body = encodeURIComponent(`Name: ${data.get("name")}\nCompany: ${data.get("company")}\nEmail: ${data.get("email")}\nIndustry: ${data.get("industry")}\nPriority: ${data.get("priority")}\nWorkflow: ${data.get("workflow")}\nOutcome: ${data.get("outcome")}\nTiming: ${data.get("timing")}\n\nContext:\n${data.get("message")}`);
-    window.location.href = `mailto:hello@customaisystems.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:ekishinevsky@gmail.com?subject=${subject}&body=${body}`;
   });
   renderFormStep();
 }
