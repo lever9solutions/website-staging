@@ -1,8 +1,4 @@
 document.documentElement.classList.add("motion");
-document.documentElement.dataset.environment = "staging";
-if (!document.title.startsWith("Staging / ")) {
-  document.title = `Staging / ${document.title}`;
-}
 
 const clamp = (value, minimum = 0, maximum = 1) => Math.min(maximum, Math.max(minimum, value));
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -20,7 +16,7 @@ if (shellHeader) {
   shellHeader.outerHTML = `
     <header class="site-header">
       <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="lever9 home"><svg class="brand-mark" viewBox="-0.5 -0.5 34 34" fill="none" aria-hidden="true"><circle cx="3.5" cy="3.5" r="3.5" fill="currentColor" /><circle cx="3.5" cy="16.5" r="3.5" fill="currentColor" /><circle cx="3.5" cy="29.5" r="3.5" fill="currentColor" /><circle cx="16.5" cy="3.5" r="3.5" fill="currentColor" /><circle cx="16.5" cy="16.5" r="3.5" fill="currentColor" /><circle cx="16.5" cy="29.5" r="3.5" fill="currentColor" /><circle cx="29.5" cy="29.5" r="3.5" fill="currentColor" /><rect x="26" y="0" width="7" height="20" rx="3.5" fill="currentColor" /></svg><span>lever9</span><em class="staging-chip" aria-label="Staging environment">Staging</em></a>
+        <a class="brand" href="index.html" aria-label="lever9 home"><svg class="brand-mark" viewBox="-0.5 -0.5 34 34" fill="none" aria-hidden="true"><circle cx="3.5" cy="3.5" r="3.5" fill="currentColor" /><circle cx="3.5" cy="16.5" r="3.5" fill="currentColor" /><circle cx="3.5" cy="29.5" r="3.5" fill="currentColor" /><circle cx="16.5" cy="3.5" r="3.5" fill="currentColor" /><circle cx="16.5" cy="16.5" r="3.5" fill="currentColor" /><circle cx="16.5" cy="29.5" r="3.5" fill="currentColor" /><circle cx="29.5" cy="29.5" r="3.5" fill="currentColor" /><rect x="26" y="0" width="7" height="20" rx="3.5" fill="currentColor" /></svg><span>lever9</span></a>
         <nav class="site-nav" aria-label="Primary navigation">${nav.map(([key, href, label]) => `<a href="${href}" ${current === key ? 'aria-current="page"' : ""}>${label}</a>`).join("")}</nav>
         <div class="header-actions"><a class="header-link" href="contact.html#schedule">Start a Project</a></div>
         <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
