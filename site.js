@@ -11,6 +11,7 @@ if (shellHeader) {
     ["process", "how-we-work.html", "How We Work"],
     ["capabilities", "capabilities.html", "Capabilities"],
     ["industries", "industries.html", "Industries"],
+    ["cases", "case-studies.html", "Case Studies"],
     ["about", "about.html", "About"],
   ];
   shellHeader.outerHTML = `
@@ -24,7 +25,7 @@ if (shellHeader) {
       </div>
     </header>
     <nav class="mobile-menu" aria-label="Mobile navigation">
-      <a href="services.html">Services</a><a href="how-we-work.html">How We Work</a><a href="capabilities.html">Capabilities</a><a href="industries.html">Industries</a><a href="about.html">About</a><a href="contact.html#schedule">Start a Project</a><small>Custom systems / architecture + engineering + construction</small>
+      <a href="services.html">Services</a><a href="how-we-work.html">How We Work</a><a href="capabilities.html">Capabilities</a><a href="industries.html">Industries</a><a href="case-studies.html">Case Studies</a><a href="about.html">About</a><a href="contact.html#schedule">Start a Project</a><small>Custom systems / architecture + engineering + construction</small>
     </nav>
     ${current === "contact" ? "" : '<a class="mobile-sticky-cta" href="contact.html#schedule">Start a Project</a>'}`;
 }
@@ -36,7 +37,7 @@ if (shellFooter) {
       <div class="footer-brand"><p class="eyebrow brand-name">lever9</p><h2>Built around how the work actually moves.</h2></div>
       <div class="footer-column"><h3>Offer</h3><a href="services.html">Services</a><a href="capabilities.html">Capabilities</a><a href="industries.html">Industries</a></div>
       <div class="footer-column"><h3>Company</h3><a href="how-we-work.html">How We Work</a><a href="about.html">About</a></div>
-      <div class="footer-column"><h3>Resources</h3><a href="roi.html">ROI Calculator</a><a href="contact.html">Contact</a></div>
+      <div class="footer-column"><h3>Resources</h3><a href="case-studies.html">Case Studies</a><a href="roi.html">ROI Calculator</a><a href="contact.html">Contact</a></div>
       <div class="footer-base"><span>&copy; <span data-current-year></span> <span class="brand-name">lever9</span></span><span>San Francisco / AI systems for AEC</span></div>
     </footer>`;
 }
