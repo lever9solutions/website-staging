@@ -9,12 +9,12 @@
     <title>Case Studies | lever9</title>
     <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="public/favicon-180.png" />
-    <link rel="stylesheet" href="site.css?v=lever9-cases-20261105-1" />
+    <link rel="stylesheet" href="site.css?v=lever9-cases-20261105-2" />
     <link rel="stylesheet" href="staging.css" />
-    <link rel="stylesheet" href="case-studies.css?v=20261105-1" />
+    <link rel="stylesheet" href="case-studies.css?v=20261105-2" />
     <script src="site.js?v=lever9-cases-20261105-1" defer></script>
     <script src="staging.js" defer></script>
-    <script src="case-studies.js?v=20261105-1" defer></script>
+    <script src="case-studies.js?v=20261105-2" defer></script>
   </head>
   <body class="case-studies-page">
     <div data-site-header data-current="cases"></div>
@@ -23,36 +23,42 @@
         <canvas class="workflow-branch-visual" data-workflow-branch aria-hidden="true"></canvas>
         <div class="page-hero-copy">
           <div class="breadcrumbs"><a href="index.html">Home</a><span>/</span><span>Case studies</span></div>
-          <div><p class="scramble-label" data-label="Selected work + applications">Selected work + applications</p><h1 id="page-title">Case studies.</h1><p>Connected systems. Complete workflows. More capacity for the work that matters.</p></div>
+          <div><p class="scramble-label" data-label="Selected work + applications">Selected work + applications</p><h1 id="page-title">Case studies.</h1><p>Company assistants and workflows, built around the work.</p></div>
         </div>
         <div class="page-hero-art" aria-hidden="true"></div>
       </section>
 
       <section class="case-collection" aria-label="Selected work and example applications">
-        <p class="case-disclosure">Anonymous engagements and example applications. Hours shown are illustrative monthly savings estimates, not measured client results.</p>
+        <div class="case-tabs" role="tablist" aria-label="Choose an industry" hidden>
+<button type="button" id="case-tab-0" role="tab" aria-controls="case-panel-0" aria-selected="true" tabindex="0">Engineering</button>
+<button type="button" id="case-tab-1" role="tab" aria-controls="case-panel-1" aria-selected="false" tabindex="-1">Tech startup</button>
+<button type="button" id="case-tab-2" role="tab" aria-controls="case-panel-2" aria-selected="false" tabindex="-1">Construction</button>
+<button type="button" id="case-tab-3" role="tab" aria-controls="case-panel-3" aria-selected="false" tabindex="-1">Environmental</button>
+</div>
 
-        <article class="case-entry case-entry-featured" aria-labelledby="case-engineering">
-          <div class="case-copy"><div class="case-meta"><span>01 / Engineering firm</span><span>Engagement</span></div><h2 id="case-engineering">One assistant.<br />The whole company.</h2><p>A company-specific assistant connecting knowledge, research, proposals, and internal systems, designed around controlled access, human approvals, and learning from approved work.</p><ul class="case-tags" aria-label="Capabilities"><li>Connected systems</li><li>Controlled access</li><li>Company knowledge</li></ul></div>
-          <div class="case-impact"><canvas class="workflow-branch-visual" data-workflow-branch aria-hidden="true"></canvas><div class="case-impact-content"><span class="case-impact-label">Illustrative monthly capacity</span><div class="case-number" aria-label="216 hours"><span data-case-count="216" aria-hidden="true">216</span><span class="case-unit" aria-hidden="true">hrs</span></div><p>Back to the team. Every month.</p><details class="case-basis"><summary>Estimate basis</summary><p>12 proposals × 8 hours + 15 people × 2 hours/week × 4 weeks. Assumes those hours are saved; validate against a workflow baseline.</p></details></div></div>
+        <article class="case-entry" id="case-panel-0" aria-labelledby="case-engineering">
+          <div class="case-copy"><div class="case-meta"><span>01 / Engineering firm</span><span>Engagement</span></div><h2 id="case-engineering">Company AI assistant</h2><p>Research, proposals, and company systems in one assistant, with controlled access, approvals, and knowledge that improves with use.</p><ul class="case-tags" aria-label="Capabilities"><li>Connected systems</li><li>Controlled access</li><li>Company knowledge</li></ul></div>
+          <div class="case-impact"><div class="case-impact-content"><span class="case-impact-label">Potential time saved / month</span><div class="case-number" aria-label="216 hours"><span data-case-count="216" aria-hidden="true">216</span><span class="case-unit" aria-hidden="true">hrs</span></div><details class="case-basis"><summary>Estimate basis</summary><p>12 proposals × 8 hours + 15 people × 2 hours/week × 4 weeks. </p></details></div></div>
         </article>
 
-        <article class="case-entry" aria-labelledby="case-startup">
-          <div class="case-copy"><div class="case-meta"><span>02 / Tech startup</span><span>Engagement</span></div><h2 id="case-startup">Company context.<br />Always within reach.</h2><p>A tailored company assistant brings scattered knowledge and work into one place, helping the team find context and move faster.</p><ul class="case-tags" aria-label="Capabilities"><li>Knowledge access</li><li>Team context</li><li>Connected work</li></ul></div>
-          <div class="case-impact"><div class="case-impact-content"><span class="case-impact-label">Illustrative monthly capacity</span><div class="case-number" aria-label="110 hours"><span data-case-count="110" aria-hidden="true">110</span><span class="case-unit" aria-hidden="true">hrs</span></div><p>Less searching. More building.</p><details class="case-basis"><summary>Estimate basis</summary><p>Example scenario: 200 issues × 15 minutes + 10 people × 1.5 hours/week × 4 weeks. This models potential value, not the delivered engagement's measured results.</p></details></div></div>
+        <article class="case-entry" id="case-panel-1" aria-labelledby="case-startup">
+          <div class="case-copy"><div class="case-meta"><span>02 / Tech startup</span><span>Engagement</span></div><h2 id="case-startup">Internal knowledge assistant</h2><p>A company assistant connects scattered knowledge and project context so the team spends less time searching.</p><ul class="case-tags" aria-label="Capabilities"><li>Knowledge access</li><li>Team context</li><li>Connected work</li></ul></div>
+          <div class="case-impact"><div class="case-impact-content"><span class="case-impact-label">Potential time saved / month</span><div class="case-number" aria-label="110 hours"><span data-case-count="110" aria-hidden="true">110</span><span class="case-unit" aria-hidden="true">hrs</span></div><details class="case-basis"><summary>Estimate basis</summary><p>Example scenario: 200 issues × 15 minutes + 10 people × 1.5 hours/week × 4 weeks. </p></details></div></div>
         </article>
 
-        <article class="case-entry" aria-labelledby="case-construction">
-          <div class="case-copy"><div class="case-meta"><span>03 / Construction company</span><span>Example application</span></div><h2 id="case-construction">More bids.<br />Same team.</h2><p>A connected bid desk turns incoming packages, document changes, and subcontractor responses into a coordinated submission and project handoff.</p><ul class="case-tags" aria-label="Capabilities"><li>Bid coordination</li><li>Document review</li><li>Project handoff</li></ul></div>
-          <div class="case-impact"><div class="case-impact-content"><span class="case-impact-label">Illustrative monthly capacity</span><div class="case-number" aria-label="120 hours"><span data-case-count="120" aria-hidden="true">120</span><span class="case-unit" aria-hidden="true">hrs</span></div><p>More room for the next opportunity.</p><details class="case-basis"><summary>Estimate basis</summary><p>8 bid packages × 15 hours saved in preparation and coordination. Potential savings depend on package complexity and review requirements.</p></details></div></div>
+        <article class="case-entry" id="case-panel-2" aria-labelledby="case-construction">
+          <div class="case-copy"><div class="case-meta"><span>03 / Construction company</span><span>Example application</span></div><h2 id="case-construction">Bid preparation</h2><p>Bid packages, document changes, and subcontractor responses organized into a submission ready for review.</p><ul class="case-tags" aria-label="Capabilities"><li>Bid coordination</li><li>Document review</li><li>Project handoff</li></ul></div>
+          <div class="case-impact"><div class="case-impact-content"><span class="case-impact-label">Potential time saved / month</span><div class="case-number" aria-label="120 hours"><span data-case-count="120" aria-hidden="true">120</span><span class="case-unit" aria-hidden="true">hrs</span></div><details class="case-basis"><summary>Estimate basis</summary><p>8 bid packages × 15 hours saved in preparation and coordination. </p></details></div></div>
         </article>
 
-        <article class="case-entry" aria-labelledby="case-environmental">
-          <div class="case-copy"><div class="case-meta"><span>04 / Environmental consultancy</span><span>Example application</span></div><h2 id="case-environmental">Field evidence.<br />Finished deliverables.</h2><p>Field notes, photos, and project records become review-ready reports, with missing evidence flagged and corrective actions tracked.</p><ul class="case-tags" aria-label="Capabilities"><li>Report preparation</li><li>Source traceability</li><li>Action tracking</li></ul></div>
-          <div class="case-impact"><div class="case-impact-content"><span class="case-impact-label">Illustrative monthly capacity</span><div class="case-number" aria-label="120 hours"><span data-case-count="120" aria-hidden="true">120</span><span class="case-unit" aria-hidden="true">hrs</span></div><p>From paperwork back to project work.</p><details class="case-basis"><summary>Estimate basis</summary><p>60 reports × 2 hours saved in assembly and drafting. Professional review remains part of the workflow.</p></details></div></div>
+        <article class="case-entry" id="case-panel-3" aria-labelledby="case-environmental">
+          <div class="case-copy"><div class="case-meta"><span>04 / Environmental consultancy</span><span>Example application</span></div><h2 id="case-environmental">Inspection reporting</h2><p>Field notes and photos become draft reports, with missing evidence flagged and follow-up actions tracked.</p><ul class="case-tags" aria-label="Capabilities"><li>Report preparation</li><li>Source traceability</li><li>Action tracking</li></ul></div>
+          <div class="case-impact"><div class="case-impact-content"><span class="case-impact-label">Potential time saved / month</span><div class="case-number" aria-label="120 hours"><span data-case-count="120" aria-hidden="true">120</span><span class="case-unit" aria-hidden="true">hrs</span></div><details class="case-basis"><summary>Estimate basis</summary><p>60 reports × 2 hours saved in assembly and drafting. Professional review remains part of the workflow.</p></details></div></div>
         </article>
+        <p class="case-disclosure">Anonymous work and example applications. Savings are illustrative estimates, not measured client results.</p>
       </section>
 
-      <section class="cta cta-hex" aria-labelledby="cta-title"><canvas class="workflow-branch-visual" data-workflow-branch aria-hidden="true"></canvas><div class="cta-inner"><p class="section-index">Your operation / Next</p><div><h2 id="cta-title">What could your team get back?</h2><a class="button button-dark" href="contact.html#schedule">Start a Conversation</a></div></div></section>
+      <section class="cta cta-hex" aria-labelledby="cta-title"><canvas class="workflow-branch-visual" data-workflow-branch aria-hidden="true"></canvas><div class="cta-inner"><p class="section-index">Your operation / Next</p><div><h2 id="cta-title">Find where AI fits in your company.</h2><a class="button button-dark" href="contact.html#schedule">Start a Conversation</a></div></div></section>
     </main>
     <div data-site-footer></div>
   </body>
