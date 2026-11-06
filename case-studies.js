@@ -8,21 +8,30 @@ const animateCaseNumber = (panel) => {
   const target = Number(number.dataset.caseCount);
   cancelAnimationFrame(caseFrames.get(number));
   if (caseMotionPreference.matches) {
-    number.textContent = target.toLocaleString("en-US");
+    number.textContent = "$" + target.toLocaleString("en-US");
     return;
   }
   const start = performance.now();
-  number.textContent = "0";
+  number.textContent = "$0";
   const update = (now) => {
     const progress = Math.min((now - start) / 800, 1);
-    number.textContent = Math.round(target * (1 - Math.pow(1 - progress, 3))).toLocaleString("en-US");
+    number.textContent = "$" + Math.round(target * (1 - Math.pow(1 - progress, 3))).toLocaleString("en-US");
     if (progress < 1 && !caseMotionPreference.matches) caseFrames.set(number, requestAnimationFrame(update));
-    else number.textContent = target.toLocaleString("en-US");
+    else number.textContent = "$" + target.toLocaleString("en-US");
   };
   caseFrames.set(number, requestAnimationFrame(update));
 };
 
+let caseTransition = null;
+let caseSelection = 0;
 const selectCase = (selected, focus = false) => {
+  const nextIndex = caseTabs.indexOf(selected);
+  const previous = document.querySelector('.case-entry:not([hidden])');
+  const next = document.getElementById(selected.getAttribute("aria-controls"));
+  const selection = ++caseSelection;
+  if (caseTransition) caseTransition.cancel();
+  const activate = () => {
+    if (selection !== caseSelection) return;
   caseTabs.forEach((tab) => {
     const active = tab === selected;
     const panel = document.getElementById(tab.getAttribute("aria-controls"));
@@ -32,11 +41,27 @@ const selectCase = (selected, focus = false) => {
     panel.classList.toggle("is-entering", active);
     if (active) animateCaseNumber(panel);
   });
+    document.querySelector(".case-position").textContent = String(nextIndex + 1).padStart(2, "0") + " / 04";
+    document.getElementById("case-select").value = String(nextIndex);
+    if (!caseMotionPreference.matches) {
+      caseTransition = next.animate([{ opacity: 0, transform: "translateY(4px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 260, easing: "ease-out" });
+    }
+  };
+  if (previous && previous !== next && !caseMotionPreference.matches) {
+    caseTransition = previous.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 110, easing: "ease-out", fill: "forwards" });
+    caseTransition.finished.then(() => {
+      if (selection !== caseSelection) return;
+      caseTransition.cancel();
+      activate();
+    }).catch(() => {});
+  } else activate();
   if (focus) selected.focus();
 };
 
 if (caseTablist && caseTabs.length) {
   caseTablist.hidden = false;
+  document.querySelector(".case-mobile-select").hidden = false;
+  document.getElementById("case-select").addEventListener("change", (event) => selectCase(caseTabs[Number(event.target.value)]));
   caseTabs.forEach((tab, index) => {
     const panel = document.getElementById(tab.getAttribute("aria-controls"));
     panel.setAttribute("role", "tabpanel");
