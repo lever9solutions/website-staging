@@ -11,10 +11,10 @@
     <link rel="apple-touch-icon" href="public/favicon-180.png" />
     <link rel="stylesheet" href="site.css?v=lever9-cases-20261105-2" />
     <link rel="stylesheet" href="staging.css" />
-    <link rel="stylesheet" href="case-studies.css?v=20261105-3" />
+    <link rel="stylesheet" href="case-studies.css?v=20261106-1" />
     <script src="site.js?v=lever9-cases-20261105-1" defer></script>
     <script src="staging.js" defer></script>
-    <script src="case-studies.js?v=20261105-3" defer></script>
+    <script src="case-studies.js?v=20261106-1" defer></script>
   </head>
   <body class="case-studies-page">
     <div data-site-header data-current="cases"></div>
@@ -26,20 +26,18 @@
       </header>
       <section class="case-collection" aria-label="Selected work and example applications">
         <div class="cases-inner">
-          <div class="case-selector">
-            <div class="case-tabs" role="tablist" aria-label="Choose an industry" hidden>
-              <button type="button" id="case-tab-0" role="tab" aria-controls="case-panel-0" aria-selected="true" tabindex="0">Engineering</button>
-              <button type="button" id="case-tab-1" role="tab" aria-controls="case-panel-1" aria-selected="false" tabindex="-1">Technology</button>
-              <button type="button" id="case-tab-2" role="tab" aria-controls="case-panel-2" aria-selected="false" tabindex="-1">Construction</button>
-              <button type="button" id="case-tab-3" role="tab" aria-controls="case-panel-3" aria-selected="false" tabindex="-1">Environmental</button>
+          <div class="case-selector" hidden>
+            <span class="case-selector-label">Selected work &amp; applications</span>
+            <div class="case-navigation" role="group" aria-label="Case navigation">
+              <button type="button" class="case-arrow" data-case-prev aria-label="Previous case study" title="Previous case study">&larr;</button>
+              <span class="case-position" aria-live="polite" aria-atomic="true">01 / 04</span>
+              <button type="button" class="case-arrow" data-case-next aria-label="Next case study" title="Next case study">&rarr;</button>
             </div>
-            <div class="case-mobile-select" hidden><label for="case-select">Industry</label><select id="case-select"><option value="0">Engineering</option><option value="1">Technology</option><option value="2">Construction</option><option value="3">Environmental</option></select></div>
-            <span class="case-position" aria-hidden="true">01 / 04</span>
           </div>
-          <div class="case-stage">
+          <div class="case-stage" aria-label="Case studies">
             <article class="case-entry" id="case-panel-0" aria-labelledby="case-title-0">
               <div class="case-copy">
-                <p class="case-meta">Engineering firm / Engagement</p>
+                <p class="case-meta">Selected work</p>
                 <h2 id="case-title-0">AI across the company</h2>
                 <p>A secure company system for research, proposals, and connected workflows, with controlled access and human approvals.</p>
                 <ol class="case-flow" aria-label="Workflow"><li><span class="case-flow-number" aria-hidden="true">01</span><span>Company systems</span></li><li><span class="case-flow-number" aria-hidden="true">02</span><span>AI workflows</span></li><li><span class="case-flow-number" aria-hidden="true">03</span><span>Approved work</span></li></ol>
@@ -53,7 +51,7 @@
             </article>
             <article class="case-entry" id="case-panel-1" aria-labelledby="case-title-1">
               <div class="case-copy">
-                <p class="case-meta">Tech startup / Engagement</p>
+                <p class="case-meta">Selected work</p>
                 <h2 id="case-title-1">Connected company knowledge</h2>
                 <p>Company knowledge and project context brought together so teams can find answers and move work forward.</p>
                 <ol class="case-flow" aria-label="Workflow"><li><span class="case-flow-number" aria-hidden="true">01</span><span>Internal knowledge</span></li><li><span class="case-flow-number" aria-hidden="true">02</span><span>Project context</span></li><li><span class="case-flow-number" aria-hidden="true">03</span><span>Team decisions</span></li></ol>
@@ -67,21 +65,21 @@
             </article>
             <article class="case-entry" id="case-panel-2" aria-labelledby="case-title-2">
               <div class="case-copy">
-                <p class="case-meta">Construction / Example application</p>
-                <h2 id="case-title-2">Automated bid preparation</h2>
-                <p>Bid documents, revisions, and subcontractor responses organized into a package ready for review.</p>
-                <ol class="case-flow" aria-label="Workflow"><li><span class="case-flow-number" aria-hidden="true">01</span><span>Bid documents</span></li><li><span class="case-flow-number" aria-hidden="true">02</span><span>Scope review</span></li><li><span class="case-flow-number" aria-hidden="true">03</span><span>Bid package</span></li></ol>
+                <p class="case-meta">Example application</p>
+                <h2 id="case-title-2">Subcontractor quote comparison</h2>
+                <p>Subcontractor quotes compared against project scope, with exclusions, missing prices, and coverage gaps flagged for review.</p>
+                <ol class="case-flow" aria-label="Workflow"><li><span class="case-flow-number" aria-hidden="true">01</span><span>Subcontractor quotes</span></li><li><span class="case-flow-number" aria-hidden="true">02</span><span>Scope comparison</span></li><li><span class="case-flow-number" aria-hidden="true">03</span><span>Review package</span></li></ol>
               </div>
               <div class="case-impact">
                 <p class="case-impact-label">Modeled annual capacity value</p>
                 <div class="case-number" aria-label="122,400 dollars per year"><span data-case-count="122400" aria-hidden="true">$122,400</span></div>
                 <p class="case-value-note">Labor capacity available for higher-value work.</p>
-                <details class="case-basis"><summary>View calculation</summary><p>8 bids/month × 15 hours/bid × $85/hour × 12 months.</p></details>
+                <details class="case-basis"><summary>View calculation</summary><p>8 quote comparison packages/month × 15 hours/package × $85/hour × 12 months.</p></details>
               </div>
             </article>
             <article class="case-entry" id="case-panel-3" aria-labelledby="case-title-3">
               <div class="case-copy">
-                <p class="case-meta">Environmental / Example application</p>
+                <p class="case-meta">Example application</p>
                 <h2 id="case-title-3">From inspection to report</h2>
                 <p>Field notes and photos turned into draft reports, with missing evidence flagged and follow-up tracked.</p>
                 <ol class="case-flow" aria-label="Workflow"><li><span class="case-flow-number" aria-hidden="true">01</span><span>Field evidence</span></li><li><span class="case-flow-number" aria-hidden="true">02</span><span>Report drafting</span></li><li><span class="case-flow-number" aria-hidden="true">03</span><span>Professional review</span></li></ol>
@@ -93,6 +91,12 @@
                 <details class="case-basis"><summary>View calculation</summary><p>60 reports/month × 2 hours/report × $75/hour × 12 months.</p></details>
               </div>
             </article>
+          </div>
+          <div class="case-markers" role="group" aria-label="Choose a case study" hidden>
+            <button type="button" data-case-index="0" aria-label="Case 1: AI across the company" aria-pressed="true" title="AI across the company"><span></span></button>
+            <button type="button" data-case-index="1" aria-label="Case 2: Connected company knowledge" aria-pressed="false" title="Connected company knowledge"><span></span></button>
+            <button type="button" data-case-index="2" aria-label="Case 3: Subcontractor quote comparison" aria-pressed="false" title="Subcontractor quote comparison"><span></span></button>
+            <button type="button" data-case-index="3" aria-label="Case 4: From inspection to report" aria-pressed="false" title="From inspection to report"><span></span></button>
           </div>
           <p class="case-disclosure">Illustrative labor value, not generated revenue or verified savings. Before implementation and operating costs.</p>
         </div>

@@ -5,13 +5,17 @@
 .case-collection { padding: 36px 0 28px; background: #f6f7f9; }
 .cases-inner { padding: 0 32px; }
 .case-selector { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.case-tabs { display: inline-flex; padding: 4px; gap: 4px; border-radius: 8px; background: #eaecef; }
-.case-tabs[hidden], .case-entry[hidden], .case-mobile-select[hidden] { display: none; }
-.case-tabs button { min-height: 38px; padding: 8px 18px; border: 0; border-radius: 5px; background: transparent; color: #566171; font: 500 13px var(--sans); cursor: pointer; transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease; }
-.case-tabs button[aria-selected="true"] { color: var(--ink); background: white; box-shadow: 0 1px 4px #17213314; }
-.case-tabs button:hover { color: var(--ink); }
-.case-tabs button:focus-visible, .case-mobile-select select:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-.case-position { color: var(--muted); font: 11px var(--mono); white-space: nowrap; }
+.case-selector[hidden], .case-entry[hidden], .case-markers[hidden] { display: none; }
+.case-selector-label { color: var(--muted); font-size: 12px; }
+.case-navigation { display: flex; gap: 16px; align-items: center; }
+.case-arrow { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid #dce1e8; border-radius: 50%; background: transparent; color: var(--ink); font: 22px var(--sans); cursor: pointer; transition: background 180ms ease, border-color 180ms ease; }
+.case-arrow:hover { background: white; border-color: #a6b2c2; }
+.case-arrow:focus-visible, .case-markers button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.case-position { min-width: 7ch; text-align: center; color: var(--muted); font: 11px var(--mono); white-space: nowrap; }
+.case-markers { display: flex; gap: 6px; align-items: center; }
+.case-markers button { display: grid; place-items: center; width: 36px; height: 32px; border: 0; padding: 0; background: transparent; cursor: pointer; }
+.case-markers button span { width: 24px; height: 3px; border-radius: 2px; background: #d5dce5; transition: background 220ms ease, width 220ms ease; }
+.case-markers button[aria-pressed="true"] span { background: #4b79b3; width: 32px; }
 .case-entry { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 70px; min-height: 330px; padding: 48px 0 32px; align-items: center; }
 .case-copy { min-height: 0; padding: 0; }
 .case-meta { margin: 0 0 18px; color: var(--muted); font-size: 12px; }
@@ -33,7 +37,6 @@
 .case-disclosure { margin: 20px 0 0; color: #738091; font-size: 11px; line-height: 1.6; }
 .cases-contact { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 46px 32px; }
 .cases-contact h2 { margin: 0; font-size: 24px; line-height: 1.25; font-weight: 500; }
-.case-mobile-select { display: none; }
 @keyframes case-flow-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (max-width: 1000px) {
   .case-entry { gap: 32px; }
@@ -45,10 +48,6 @@
   .cases-intro > p { font-size: 15px; }
   .cases-inner { padding: 0 24px; }
   .case-collection { padding-top: 24px; }
-  .case-tabs { display: none; }
-  .case-mobile-select { display: flex; gap: 12px; align-items: center; }
-  .case-mobile-select label { font-size: 12px; color: var(--muted); }
-  .case-mobile-select select { width: 176px; min-height: 40px; padding: 8px 30px 8px 12px; border: 1px solid #d9dfe7; border-radius: 6px; background: white; color: var(--ink); font: 14px var(--sans); }
   .case-entry { grid-template-columns: minmax(0, 1fr); min-height: 490px; gap: 24px; padding: 30px 0 10px; align-content: start; }
   .case-copy { min-height: 242px; }
   .case-copy h2 { font-size: 28px; }
@@ -60,9 +59,10 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .case-entry.is-entering .case-flow li::after { animation: none; }
-  .case-tabs button { transition: none; }
 }
 @media (max-width: 360px) {
-  .case-mobile-select label { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .case-selector-label { max-width: 110px; }
+  .case-navigation { gap: 8px; }
+  .case-arrow { width: 36px; height: 36px; }
   .case-number { font-size: 48px; }
 }

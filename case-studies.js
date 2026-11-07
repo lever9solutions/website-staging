@@ -1,7 +1,11 @@
-const caseTablist = document.querySelector(".case-tabs");
-const caseTabs = [...document.querySelectorAll('.case-tabs [role="tab"]')];
+const casePanels = [...document.querySelectorAll(".case-entry")];
+const caseControls = document.querySelector(".case-selector");
+const caseMarkers = [...document.querySelectorAll("[data-case-index]")];
 const caseMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const caseFrames = new WeakMap();
+let selectedCase = 0;
+let caseTransition = null;
+let caseSelection = 0;
 
 const animateCaseNumber = (panel) => {
   const number = panel.querySelector("[data-case-count]");
@@ -22,27 +26,22 @@ const animateCaseNumber = (panel) => {
   caseFrames.set(number, requestAnimationFrame(update));
 };
 
-let caseTransition = null;
-let caseSelection = 0;
-const selectCase = (selected, focus = false) => {
-  const nextIndex = caseTabs.indexOf(selected);
-  const previous = document.querySelector('.case-entry:not([hidden])');
-  const next = document.getElementById(selected.getAttribute("aria-controls"));
+const selectCase = (index) => {
+  selectedCase = (index + casePanels.length) % casePanels.length;
+  const nextIndex = selectedCase;
+  const next = casePanels[nextIndex];
+  const previous = casePanels.find((panel) => !panel.hidden);
   const selection = ++caseSelection;
   if (caseTransition) caseTransition.cancel();
   const activate = () => {
     if (selection !== caseSelection) return;
-  caseTabs.forEach((tab) => {
-    const active = tab === selected;
-    const panel = document.getElementById(tab.getAttribute("aria-controls"));
-    tab.setAttribute("aria-selected", String(active));
-    tab.tabIndex = active ? 0 : -1;
-    panel.hidden = !active;
-    panel.classList.toggle("is-entering", active);
-    if (active) animateCaseNumber(panel);
-  });
-    document.querySelector(".case-position").textContent = String(nextIndex + 1).padStart(2, "0") + " / 04";
-    document.getElementById("case-select").value = String(nextIndex);
+    casePanels.forEach((panel) => {
+      panel.hidden = panel !== next;
+      panel.classList.toggle("is-entering", panel === next);
+    });
+    caseMarkers.forEach((marker, i) => marker.setAttribute("aria-pressed", String(i === nextIndex)));
+    document.querySelector(".case-position").textContent = String(nextIndex + 1).padStart(2, "0") + " / " + String(casePanels.length).padStart(2, "0");
+    animateCaseNumber(next);
     if (!caseMotionPreference.matches) {
       caseTransition = next.animate([{ opacity: 0, transform: "translateY(4px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 260, easing: "ease-out" });
     }
@@ -55,29 +54,37 @@ const selectCase = (selected, focus = false) => {
       activate();
     }).catch(() => {});
   } else activate();
-  if (focus) selected.focus();
 };
 
-if (caseTablist && caseTabs.length) {
-  caseTablist.hidden = false;
-  document.querySelector(".case-mobile-select").hidden = false;
-  document.getElementById("case-select").addEventListener("change", (event) => selectCase(caseTabs[Number(event.target.value)]));
-  caseTabs.forEach((tab, index) => {
-    const panel = document.getElementById(tab.getAttribute("aria-controls"));
-    panel.setAttribute("role", "tabpanel");
-    panel.setAttribute("aria-labelledby", tab.id);
-    panel.tabIndex = 0;
-    tab.addEventListener("click", () => selectCase(tab));
-    tab.addEventListener("keydown", (event) => {
-      let next;
-      if (event.key === "ArrowRight") next = (index + 1) % caseTabs.length;
-      else if (event.key === "ArrowLeft") next = (index - 1 + caseTabs.length) % caseTabs.length;
-      else if (event.key === "Home") next = 0;
-      else if (event.key === "End") next = caseTabs.length - 1;
-      else return;
-      event.preventDefault();
-      selectCase(caseTabs[next], true);
-    });
+if (caseControls && casePanels.length) {
+  caseControls.hidden = false;
+  document.querySelector(".case-markers").hidden = false;
+  casePanels.forEach((panel, index) => {
+    panel.setAttribute("role", "group");
+    panel.setAttribute("aria-roledescription", "slide");
+    panel.setAttribute("aria-label", String(index + 1) + " of " + String(casePanels.length));
   });
-  selectCase(caseTabs[0]);
+  document.querySelector("[data-case-prev]").addEventListener("click", () => selectCase(selectedCase - 1));
+  document.querySelector("[data-case-next]").addEventListener("click", () => selectCase(selectedCase + 1));
+  caseMarkers.forEach((marker, index) => marker.addEventListener("click", () => selectCase(index)));
+  document.querySelector(".case-collection").addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    selectCase(selectedCase + (event.key === "ArrowRight" ? 1 : -1));
+  });
+  let touchOrigin = null;
+  const stage = document.querySelector(".case-stage");
+  stage.addEventListener("touchstart", (event) => {
+    if (event.touches.length !== 1) { touchOrigin = null; return; }
+    touchOrigin = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+  }, { passive: true });
+  stage.addEventListener("touchend", (event) => {
+    if (!touchOrigin) return;
+    const dx = event.changedTouches[0].clientX - touchOrigin.x;
+    const dy = event.changedTouches[0].clientY - touchOrigin.y;
+    touchOrigin = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) selectCase(selectedCase + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  stage.addEventListener("touchcancel", () => { touchOrigin = null; }, { passive: true });
+  selectCase(0);
 }
